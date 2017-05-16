@@ -1,3 +1,6 @@
 FunctionPointer/FunctionPointer/Debug/
 FunctionPointer/ipch/
 *.opensdf
+Delegate/Delegate/Debug/
+MultiDelegate/ipch/
+*.sdf
