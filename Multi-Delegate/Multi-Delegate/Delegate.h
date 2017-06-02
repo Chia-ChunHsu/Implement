@@ -1,58 +1,50 @@
 #include <list>
 #include <functional>
+
 template <class CType> 
 class Delegate
 {
 public:
-	//Types a;
-	Delegate();
-	//template <class Type>
+	Delegate() {}
+	Delegate(int _num);	
+	void Invoke(int _num);
 	Delegate& operator+(CType nextOperation)
 	{
 		_commandList.push_back(nextOperation);
 		return *this;
 	}
 
-	void Invoke();
+	void operator()(int _num)
+	{
+		Invoke(_num);
+	}
+		
+
 
 private:
-	//CType _t;
 	std::list<CType> _commandList;
 };
-template <class CType>
-Delegate<CType>::Delegate()
-{
-	Invoke();
-}
-/*
-template <class CType>
-void Delegate<CType>::operator+(std::function<CType> &nextOperation)
-{
-	_commandList.push_back(nextOperation);
-	//return *this;
-}
-*/
-template <class CType>
-void Delegate<CType>::Invoke()
-{
-	//std::cout << _commandList.size();
-	//void(*function)();
 
+template <class CType>
+Delegate<CType>::Delegate(int _num)
+{
+	Invoke(_num);
+}
+
+template <class CType>
+void Delegate<CType>::Invoke(int _num)
+{
+	// Method 1
+	/*	
 	for each (CType var in _commandList)
 	{
-		//var();
+		var();
 	}
-
+	*/
+	// Method 2
 	for (std::list<CType>::iterator i = _commandList.begin(); i != _commandList.end(); i++)
 	{
-	    (*i)();
+	    (*i)(_num);
 	}
-	//{
-//		CType temp = _commandList[i];
-		//std::function<CType> temp = _commandList[i];
-		//function = temp ;
-		//function();
-		//&_commandList[i];
-		//s();
-	//}
+
 }

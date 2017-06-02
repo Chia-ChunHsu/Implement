@@ -8,27 +8,24 @@
 #include "stdafx.h"
 #include <iostream>
 #include "Delegate.h"
-typedef int(*function)();
-int funct1()
+typedef int(*function)(int);
+int funct1(int num)
 {
-	std::cout << "I am funct1" << std::endl;
+	std::cout << "I am funct1 " <<num<< std::endl;
 	return 1;
 }
-int funct2()
+int funct2(int num)
 {
-	std::cout << "I am funct2" << std::endl;
+	std::cout << "I am funct2 " <<num<< std::endl;
 	return 2;
 }
 int main()
 {
 	Delegate<function> a;
 
-	//function = &funct1;
 	a + funct1;
-	//a+function;
-	//function = &funct2;
-	a+funct2;
-	a.Invoke();
+	a + funct2;
+	a(5);
 	system("pause");
 	return 0;
 
