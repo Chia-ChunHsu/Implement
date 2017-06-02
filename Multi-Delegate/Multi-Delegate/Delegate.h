@@ -6,8 +6,9 @@ class Delegate
 {
 public:
 	Delegate() {}
-	Delegate(int _num);	
+	//Delegate(int _num);	
 	void Invoke(int _num);
+
 	Delegate& operator+(CType nextOperation)
 	{
 		_commandList.push_back(nextOperation);
@@ -20,17 +21,16 @@ public:
 	}
 		
 
-
 private:
 	std::list<CType> _commandList;
 };
-
-template <class CType>
+/*
+template <class CType,class Param>
 Delegate<CType>::Delegate(int _num)
 {
 	Invoke(_num);
 }
-
+*/
 template <class CType>
 void Delegate<CType>::Invoke(int _num)
 {
